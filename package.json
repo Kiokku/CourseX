@@ -1,0 +1,39 @@
+{
+  "name": "coursex",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch --env-file-if-exists=.env server/index.ts --dev",
+    "build": "tsc --noEmit && vite build",
+    "start": "tsx --env-file-if-exists=.env server/index.ts",
+    "test": "tsx --test tests/*.test.ts"
+  },
+  "dependencies": {
+    "@earendil-works/pi-agent-core": "1.1.0",
+    "@earendil-works/pi-ai": "1.1.0",
+    "@tldraw/assets": "^5.5.2",
+    "@tldraw/tlschema": "5.5.2",
+    "@tldraw/validate": "5.5.2",
+    "express": "^5.1.0",
+    "fflate": "0.8.2",
+    "lucide-react": "^0.468.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1",
+    "remark-parse": "11.0.0",
+    "tldraw": "5.5.2",
+    "unified": "11.0.5"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^25.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@vitejs/plugin-react": "^5.1.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.0",
+    "vite": "^7.3.0"
+  }
+}

@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="React Learning Hub × CourseX 产品企划书：从 React 源码学习到可验证、可版本化、可创作的知识体系。">
+<title>React Learning Hub × CourseX｜产品企划书 v1.0</title>
+<style>
+:root{--bg:#f6f7fa;--surface:#fff;--surface2:#f0f3f8;--ink:#17243a;--muted:#62718a;--border:#dce4ee;--primary:#2855d9;--primary-soft:#e8efff;--teal:#077f72;--teal-soft:#dcf5ee;--amber:#a96a18;--amber-soft:#fff1d9;--red:#ac4756;--red-soft:#ffeef0;--side:#0c182c;--side-ink:#aebbd0;--side-active:#fff;--shadow:0 12px 48px rgba(30,50,80,.06);--r:16px;--font:system-ui,-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:32px}body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.74;font-size:15px}a{color:var(--primary);text-decoration:none}a:hover{text-decoration:underline}button{font:inherit}::selection{background:#bed0ff}h1,h2,h3,h4,p{margin-top:0}h1,h2,h3,h4{line-height:1.37;letter-spacing:-.025em}h2{font-size:29px;margin-bottom:13px}h3{font-size:20px;margin-bottom:9px}h4{font-size:15px;margin-bottom:8px}p{color:var(--muted);line-height:1.83}strong{color:var(--ink)}code,pre{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace}code{background:var(--surface2);padding:2px 5px;border-radius:5px;color:#36558e;font-size:.91em}pre{overflow:auto;margin:0;background:#0e1c30;color:#d9ebff;border-radius:13px;padding:20px 23px;font-size:12px;line-height:1.7;tab-size:2}pre code{background:none;color:inherit;padding:0;font-size:inherit}.layout{display:grid;grid-template-columns:260px minmax(0,1fr);min-height:100vh}.side{background:var(--side);color:var(--side-ink);position:sticky;top:0;height:100vh;overflow-y:auto;padding:32px 20px 25px;scrollbar-width:thin}.brand{display:flex;align-items:center;gap:12px;padding:3px 12px 30px;color:#fff}.brandmark{display:grid;place-items:center;background:linear-gradient(140deg,#7ba5ff,#60e0d2);color:#12223d;font-weight:900;font-size:14px;white-space:nowrap;width:37px;height:37px;border-radius:11px;box-shadow:0 5px 20px #5c9cef33}.brand b{font-size:15px}.brand small{display:block;font-size:10px;color:#94a7bf;line-height:1.3;letter-spacing:.13em;font-weight:700}.snav-label{padding:16px 12px 8px;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#68819e;font-weight:700}.snav a{display:flex;align-items:center;gap:9px;color:#9dacc4;font-size:13px;padding:10px 13px;border-radius:9px;margin-bottom:3px;transition:.2s}.snav a .n{font-family:ui-monospace,monospace;font-size:10px;color:#6786a9;min-width:23px}.snav a:hover{color:#fff;background:#1d304b;text-decoration:none}.snav a.active{background:#203657;color:#fff}.side-bottom{margin:30px 7px 0;padding:16px 12px;border:1px solid #2a3e58;border-radius:12px;font-size:11px;line-height:1.75;color:#8ba0bb}.side-bottom b{display:block;color:#dce8f8;margin-bottom:3px}.main{width:min(100%,1280px);margin:0 auto;padding:0 57px 100px;min-width:0}.topbar{display:flex;justify-content:space-between;align-items:center;gap:20px;margin:0 -57px;padding:24px 57px;border-bottom:1px solid var(--border)}.crumb{font-size:12px;color:var(--muted);display:flex;gap:12px;align-items:center}.crumb span{color:#a4adba}.top-actions{display:flex;gap:8px}.btn{border:1px solid var(--border);background:var(--surface);padding:9px 13px;border-radius:9px;color:var(--ink);cursor:pointer;font-size:12px;font-weight:650;transition:.2s}.btn:hover{border-color:#8ca7e7;box-shadow:0 4px 12px #2855d90c}.btn.primary{background:var(--primary);color:white;border-color:var(--primary)}.btn.active{background:var(--primary-soft);color:var(--primary);border-color:#b9ccff}.hero{padding:55px 0 34px;position:relative}.eyebrow{display:flex;align-items:center;gap:9px;color:var(--primary);font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase}.eyebrow:before{content:"";width:22px;height:2px;background:var(--primary)}.hero h1{font-size:clamp(35px,4.6vw,59px);max-width:880px;line-height:1.16;margin:21px 0 24px;letter-spacing:-.055em}.hero h1 em{font-style:normal;color:var(--primary)}.lead{max-width:805px;font-size:17px;line-height:1.95;color:#52657e}.hero-meta{display:flex;flex-wrap:wrap;gap:11px;margin-top:29px}.pill{display:inline-flex;align-items:center;gap:6px;background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:7px 11px;font-size:11px;font-weight:700;color:#52627a}.pill .dot{width:6px;height:6px;border-radius:50%;background:#26a18b}.quote{padding:20px 24px;border-left:4px solid var(--primary);background:var(--primary-soft);border-radius:0 12px 12px 0;margin:22px 0;color:#294a81;font-weight:650;line-height:1.9}.section{padding-top:48px;margin-top:22px;border-top:1px solid var(--border)}.sectionhead{display:flex;justify-content:space-between;gap:20px;align-items:start;margin-bottom:23px}.sectionhead p{max-width:790px;margin:0}.secno{font-family:ui-monospace,monospace;color:var(--primary);font-size:11px;font-weight:700;letter-spacing:.12em;margin-bottom:9px}.cards{display:grid;gap:16px;min-width:0}.cards.three{grid-template-columns:repeat(3,minmax(0,1fr))}.cards.two{grid-template-columns:repeat(2,minmax(0,1fr))}.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:22px;min-width:0;box-shadow:var(--shadow)}.card.flat{box-shadow:none}.card h3{margin:4px 0 8px}.card p:last-child{margin-bottom:0}.small{font-size:12px;line-height:1.75}.label{font-size:11px;color:var(--muted);font-weight:750;letter-spacing:.04em}.kpi{font-size:34px;font-weight:850;letter-spacing:-.065em;color:var(--ink);line-height:1.2}.accent-blue{color:var(--primary)}.accent-green{color:var(--teal)}.accent-orange{color:var(--amber)}.tag{display:inline-flex;border-radius:6px;padding:3px 7px;font-size:10px;line-height:1.4;font-weight:750;white-space:nowrap}.tag.blue{color:#2453ba;background:#e9f0ff}.tag.green{color:#08715f;background:#e0f7ed}.tag.orange{color:#95611a;background:#fff1d8}.tag.gray{color:#607087;background:#eef2f7}.tag.red{color:#a53f52;background:#ffebef}.mono{font-family:ui-monospace,SFMono-Regular,monospace}.divider{height:1px;background:var(--border);margin:25px 0}.table-wrap{overflow-x:auto;border:1px solid var(--border);border-radius:14px;background:var(--surface)}table{width:100%;border-collapse:collapse;font-size:12px;line-height:1.75;min-width:650px}td,th{padding:13px 15px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}th{font-size:11px;white-space:nowrap;background:#f3f6fb;color:#50617d;font-weight:800}tr:last-child td{border-bottom:0}tbody tr:hover{background:#fafcff}.table-note{color:var(--muted);font-size:12px;margin:10px 0 0}.topology{background:#0e2038;border:1px solid #263d5e;color:#eaf1ff;border-radius:21px;padding:26px 24px;overflow:hidden}.topology-top{display:grid;grid-template-columns:1fr 32px 1.17fr 32px 1fr;gap:7px;align-items:center}.topo-node{border:1px solid #425676;border-radius:14px;background:#1a304d;padding:20px 16px;min-height:142px}.topo-node.focus{border-color:#54cfbd;background:#193e4d}.topo-node .topo-label{font-size:10px;color:#8baed9;font-weight:800;letter-spacing:.1em;text-transform:uppercase}.topo-node h3{font-size:19px;margin:10px 0;color:white}.topo-node p{font-size:12px;color:#b7c8dc;margin:0}.topo-arrow{text-align:center;color:#80b5ff;font-weight:900;font-size:23px}.topo-note{margin-top:19px;padding-top:16px;border-top:1px solid #304561;color:#a7c0d9;font-size:12px;text-align:center}.spec{display:grid;grid-template-columns:145px 1fr;gap:22px;padding:24px 0;border-top:1px solid var(--border)}.spec:first-of-type{border-top:0}.spec-label{font-size:12px;font-weight:800;letter-spacing:.03em;color:var(--primary);line-height:1.6}.spec-body h4{margin:0 0 8px}.spec-body p{margin:0 0 11px;font-size:13px}.spec-body ul,.content-list{padding-left:18px;margin:9px 0;color:var(--muted);font-size:13px;line-height:1.9}.spec-body li{margin:4px 0}.spec-body li::marker{color:#6b95e5}.callout{background:#eaf3ff;border:1px solid #cde0fc;border-radius:13px;padding:17px 19px;color:#355579;font-size:13px;line-height:1.9}.callout strong{color:#28466e}.callout.warning{background:#fff7e9;border-color:#f2deb3;color:#8a5c1d}.callout.warning strong{color:#845419}.filetree{background:#101e31;color:#cce0fb;padding:24px;border-radius:13px;overflow:auto;font-size:12px;line-height:1.9}.filetree .comment{color:#92a8c2}.flow4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.step{border:1px solid var(--border);background:var(--surface);border-radius:12px;padding:18px;position:relative}.step .num{font-family:ui-monospace,monospace;color:var(--primary);font-weight:800;font-size:11px}.step h4{font-size:15px;margin:8px 0}.step p{font-size:12px;margin:0}.step:not(:last-child):after{content:"→";position:absolute;top:43%;right:-12px;z-index:1;background:var(--bg);color:var(--primary);border-radius:50%;width:14px;height:23px;text-align:center}.mock{border:1px solid #cfd8e6;background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 18px 60px #17345c12}.mock-bar{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 16px;background:#ecf1f8;border-bottom:1px solid #d7e1ec;font-size:11px;color:#566784}.mock-dot{width:8px;height:8px;border-radius:50%;background:#bdc9d7;display:inline-block;margin-right:4px}.mock-body{display:grid;grid-template-columns:155px minmax(0,1fr);min-height:350px}.mock-menu{border-right:1px solid #e2e8f0;background:#f9fbfd;padding:18px 12px}.mock-menu .item{border-radius:7px;padding:9px 10px;font-size:11px;color:#68778b;margin-bottom:3px}.mock-menu .item.selected{background:#e6eeff;color:#2855c7;font-weight:800}.mock-canvas{position:relative;min-height:350px;background-image:radial-gradient(#d6e1f1 .8px,transparent .8px);background-size:18px 18px;background-color:#fcfdff;overflow:hidden;padding:25px 23px}.mock-canvas .mc-title{font-size:12px;color:#62758e;font-weight:750}.notes-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}.note-block{border:1px solid #d9e2f0;background:white;box-shadow:0 6px 20px #0e2d500a;border-radius:10px;padding:12px;min-height:103px}.note-block b{display:block;font-size:11px;margin-bottom:7px}.note-block p{margin:0;color:#748298;font-size:10px;line-height:1.65}.note-block.qa{border-color:#b8d1f8;background:#f5f9ff}.note-block.diagram{border-color:#a6dfd2;background:#f5fcfa}.note-block.wide{grid-column:span 2;min-height:76px}.mock-foot{font-size:10px;color:#647992;margin-top:14px}.columns{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;min-width:0}.columns>*{min-width:0}.feature{display:flex;align-items:start;gap:14px;padding:18px 0;border-bottom:1px solid var(--border)}.feature:last-child{border-bottom:none}.f-icon{width:35px;height:35px;display:grid;place-items:center;flex:none;border-radius:9px;background:var(--primary-soft);color:var(--primary);font-weight:900;font-size:14px}.feature b{display:block;margin-bottom:4px;font-size:13px}.feature p{font-size:12px;margin:0}.priority-bar{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-bottom:14px}.priority-bar span{font-size:12px;color:var(--muted);margin-right:4px}.check-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.checkitem{border:1px solid var(--border);border-radius:11px;background:var(--surface);padding:12px 14px;display:flex;align-items:start;gap:9px;cursor:pointer;font-size:12px;line-height:1.65}.checkitem input{accent-color:var(--teal);margin-top:3px;flex:none}.checkitem.is-done{background:#f0faf6;border-color:#c9e7da}.check-progress{margin-top:14px;color:var(--muted);font-size:12px}.progress-track{height:7px;overflow:hidden;background:#e2e9f1;border-radius:30px;margin-top:7px}.progress-fill{width:0;background:linear-gradient(90deg,#5aa9a3,#1e8c83);height:100%;border-radius:30px;transition:.2s}.timeline{position:relative;border-left:2px solid #dbe5f3;margin-left:16px;padding-left:27px}.mile{position:relative;padding-bottom:27px}.mile:last-child{padding-bottom:0}.mile:before{content:"";position:absolute;top:7px;left:-34px;width:11px;height:11px;border-radius:50%;background:var(--primary);border:3px solid var(--bg)}.mile h3{font-size:16px;margin:0 0 7px}.mile p{font-size:13px;margin-bottom:8px}.mile .tag{margin-right:4px}.footer{margin-top:78px;border-top:1px solid var(--border);padding-top:25px;color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:20px}.codeblock-header{display:flex;justify-content:space-between;align-items:center;background:#182942;border-radius:13px 13px 0 0;padding:9px 16px;color:#a4bddc;font-size:11px}.codeblock-header+pre{border-radius:0 0 13px 13px}.mini-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.mini-panel{border:1px solid var(--border);border-radius:12px;background:var(--surface);padding:17px}.mini-panel .head{color:var(--primary);font-weight:800;font-size:11px;margin-bottom:8px}.mini-panel p{font-size:12px;margin:0}.source{font-size:11px;color:var(--muted)}.scrollbar::-webkit-scrollbar{width:8px}.scrollbar::-webkit-scrollbar-thumb{background:#3a4d67;border-radius:5px}.only-print{display:none}.linkgrid{display:flex;flex-wrap:wrap;gap:9px;margin-top:15px}.linkgrid a{display:inline-block;border:1px solid var(--border);padding:7px 10px;background:white;border-radius:8px;font-size:11px}.notice{font-size:11px;color:var(--muted);margin:14px 0}.mobile-menu{display:none}.status{color:var(--teal);font-weight:800}.outcome{border:1px solid #badfce;background:linear-gradient(140deg,#edf9f4,#f9fdfb);border-radius:15px;padding:22px;color:#246451}.outcome p{color:#3e7360;margin:0;font-size:13px}.outcome strong{color:#1e604e}.hide-row{display:none!important}details{border:1px solid var(--border);border-radius:11px;background:var(--surface);margin-bottom:9px;overflow:hidden}details summary{cursor:pointer;padding:14px 16px;font-size:13px;font-weight:750;list-style-position:inside}details .detail-body{border-top:1px solid var(--border);padding:15px 19px;color:var(--muted);font-size:12px}details .detail-body p{font-size:12px}.anchor-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:18px}.anchor-actions a{display:inline-block;padding:6px 10px;border-radius:7px;background:#f0f4fb;font-size:11px;font-weight:700}.inline-icons{font-size:15px;letter-spacing:3px}.kbd{padding:2px 6px;border:1px solid #d4dceb;border-bottom-width:2px;border-radius:5px;font-family:monospace;font-size:11px;color:var(--muted)}
+@media(max-width:1150px){.main{padding-left:32px;padding-right:32px}.topbar{margin:0 -32px;padding:20px 32px}.layout{grid-template-columns:225px minmax(0,1fr)}.cards.three{grid-template-columns:repeat(2,minmax(0,1fr))}.topology-top{grid-template-columns:1fr 20px 1.15fr 20px 1fr}.topo-node{padding:14px;min-height:160px}.topo-node h3{font-size:16px}}
+@media(max-width:850px){.layout{display:block}.side{position:fixed;z-index:20;width:260px;top:0;left:0;transform:translateX(-105%);transition:.25s;box-shadow:12px 0 40px #0b172644}.side.show{transform:none}.mobile-menu{display:inline-flex}.main{padding:0 22px 70px}.topbar{margin:0 -22px;padding:12px 22px}.hero{padding-top:36px}.topology-top{grid-template-columns:1fr;gap:8px}.topo-arrow{transform:rotate(90deg);font-size:18px}.topo-node{min-height:0}.section{padding-top:35px}.flow4{grid-template-columns:1fr 1fr}.step:after{display:none}.sectionhead{display:block}.spec{grid-template-columns:1fr;gap:8px}.columns{grid-template-columns:minmax(0,1fr)}.columns>*{min-width:0}.mock-body{grid-template-columns:125px 1fr}}
+@media(max-width:550px){.cards.two,.cards.three,.flow4,.check-grid,.mini-grid{grid-template-columns:minmax(0,1fr)}.hero h1{font-size:35px}.lead{font-size:15px}.mock-body{grid-template-columns:1fr}.mock-menu{display:none}.notes-grid{grid-template-columns:1fr}.note-block.wide{grid-column:auto}.footer{display:block}.top-actions .btn:not(.mobile-menu){padding:8px;font-size:11px}.topbar .crumb{display:none}.card{padding:18px}.hero-meta{gap:5px}.pill{font-size:10px}.sectionhead h2{font-size:25px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+@media print{*{box-shadow:none!important}.layout{display:block}.side,.top-actions,.priority-bar,.check-progress,.no-print{display:none!important}.only-print{display:block}.main{max-width:none;padding:0 16px}.topbar{margin:0;padding:8px 0}.hero{padding:20px 0}.section{break-before:page;padding-top:22px;margin-top:10px}.card,.mock,.callout,.topology,.spec,.step,.table-wrap,pre,.checkitem,.mini-panel{break-inside:avoid}body{background:#fff;color:#111;font-size:12px}h2{font-size:22px}.lead{font-size:14px}.mock-canvas{min-height:300px}details .detail-body{display:block!important}details{break-inside:avoid}details summary{font-weight:800}.cards.three{grid-template-columns:repeat(3,1fr)}.flow4{grid-template-columns:repeat(4,1fr)}.topology{-webkit-print-color-adjust:exact;print-color-adjust:exact}.sectionhead{margin-bottom:12px}.footer{margin-top:20px}a{text-decoration:underline;color:#304f85}}
+</style>
+</head>
+<body>
+<div class="layout">
+<aside class="side scrollbar" id="sidebar" aria-label="企划书导航">
+  <div class="brand"><div class="brandmark">R<span style="color:#effffc">×</span></div><div><b>React × CourseX</b><small>PRODUCT BLUEPRINT</small></div></div>
+  <div class="snav-label">STRATEGY / 战略</div>
+  <nav class="snav" id="toc">
+    <a href="#overview"><span class="n">00</span> 项目摘要</a>
+    <a href="#boundary"><span class="n">01</span> 产品边界与现状</a>
+    <a href="#architecture"><span class="n">02</span> 整体架构</a>
+    <div class="snav-label">PROJECTS / 改造</div>
+    <a href="#hub"><span class="n">03</span> React Learning Hub</a>
+    <a href="#coursex"><span class="n">04</span> CourseX 功能规划</a>
+    <a href="#workflow"><span class="n">05</span> 目标学习流程</a>
+    <div class="snav-label">DELIVERY / 交付</div>
+    <a href="#data"><span class="n">06</span> 知识与导出协议</a>
+    <a href="#backlog"><span class="n">07</span> 需求优先级</a>
+    <a href="#delivery"><span class="n">08</span> 研发里程碑</a>
+    <a href="#acceptance"><span class="n">09</span> 验收与风险</a>
+    <a href="#appendix"><span class="n">10</span> 示例与来源</a>
+  </nav>
+  <div class="side-bottom"><b>唯一的北极星目标</b>让每次 React 源码学习，都能留下可验证、可重访、可迁移、可成长为教学作品的知识资产。</div>
+</aside>
+<main class="main">
+  <header class="topbar"><div class="crumb"><b>PRODUCT STRATEGY</b><span>/</span> React Learning Hub × CourseX <span>/</span> v1.0</div><div class="top-actions"><button class="btn mobile-menu" id="navToggle" aria-label="打开目录">☰ 目录</button><button class="btn" onclick="window.print()">⎙ 打印 / 存为 PDF</button><button class="btn primary" id="copyBrief">复制摘要</button></div></header>
+
+  <section class="hero" id="overview">
+    <div class="eyebrow">2026.11.05 · PRODUCT PROPOSAL · V1.0</div>
+    <h1>从源码学习，<br>走向<span class="accent-blue">可生长的知识作品</span><em>。</em></h1>
+    <p class="lead">React Learning Hub 不再是一套沉重的学习管理系统，而是 <strong>CourseX 上学习 React 的路线图与说明书</strong>；CourseX 不再只是播放器加笔记区，而是以「章节无限画布」承载知识卡片、AI 对话、实验记录和图解的学习创作空间。所有知识成果支持 Git 友好的结构化导出，最终服务于 <strong>React, Explained.</strong> 交互式深度教材。</p>
+    <div class="hero-meta"><span class="pill"><span class="dot"></span>产品状态：企划 / 待开发</span><span class="pill">两项目协同</span><span class="pill">不迁移旧学习记录</span><span class="pill">优先单用户、本地优先</span></div>
+    <div class="quote">方案总原则：<b>说明书负责指路，CourseX 负责学习，画布负责沉淀，Git 负责可拥有，最终作品负责对外表达。</b></div>
+    <div class="cards three">
+      <div class="card"><div class="label">REACT LEARNING HUB</div><div class="kpi accent-blue">Guide</div><p class="small">轻量化路线图、设计问题、课程映射、学习操作方法。<strong>不承担进度管理与知识存储。</strong></p></div>
+      <div class="card"><div class="label">COURSEX</div><div class="kpi accent-green">Studio</div><p class="small">以章节画布为主知识空间，聚合问题、卡片、AI 对话、源码和草图，支持持续整理。</p></div>
+      <div class="card"><div class="label">REACT, EXPLAINED.</div><div class="kpi accent-orange">Artifact</div><p class="small">未来的公开交互教材。选取经验证的机制与交互组件，不直接公开工作画布。</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="boundary">
+    <div class="secno">01 / POSITIONING & BASELINE</div><div class="sectionhead"><div><h2>明确职责，而不是复制两套系统</h2><p>两个项目的边界现在应当比之前更清晰：一个提供学习路径，一个承载学习行为与成果。公开教材是未来产物，而不是本轮改造的交付范围。</p></div></div>
+    <div class="table-wrap"><table><thead><tr><th style="width:18%">产品</th><th>负责什么</th><th>明确不做什么</th><th>成果位置</th></tr></thead><tbody>
+      <tr><td><b>React Learning Hub</b></td><td>学习目标、原理问题、知识依赖、课程章节映射、CourseX 使用说明</td><td>学习状态跟踪、每日打卡、Quiz 归档、完整个人笔记、画板存储</td><td>GitHub 仓库中的少量 Markdown</td></tr>
+      <tr><td><b>CourseX</b></td><td>课程学习、章节画布、AI 讨论、知识卡片、源码/实验链接、搜索与导出</td><td>建立另一套强制的打卡/等级/考试系统；承担最终公开教材全部编辑功能</td><td>本地数据 + 结构化导出</td></tr>
+      <tr><td><b>React, Explained.</b></td><td>围绕 React 哲学与底层机制形成可交互的公共教学作品</td><td>直接暴露私人 AI 会话、课程原文、未经确认的知识草稿</td><td>未来独立公开项目</td></tr>
+    </tbody></table></div>
+    <div class="cards two" style="margin-top:16px">
+      <div class="card flat"><span class="tag green">已观察到 · UI 层</span><h3 style="margin-top:12px">CourseX 现状</h3><p class="small">已有课程目录、视频、Markdown 课件、基于当前课件的 Pi Agent 问答、tldraw 画板、画板选择与本地保存入口。页面显示课程 <code>02-01 实现JSX</code>。这些是可复用能力。</p></div>
+      <div class="card flat"><span class="tag blue">参考项目 · UI 层</span><h3 style="margin-top:12px">CanvasAgents 启发</h3><p class="small">已观察到「项目 → 画布」组织、本地同步、画布内终端与 Agent 会话入口。可借鉴“内容随画布走”的交互观念；不意味着复刻终端、Agent CLI 或整套工程架构。</p></div>
+    </div>
+    <div class="callout warning" style="margin-top:16px"><strong>事实边界：</strong>上述现状基于可读取的浏览器页面，而非 CourseX / CanvasAgents 的完整源码审计。因此“章节是否已有数据库关系、AI 消息如何持久化、tldraw 数据结构能否扩展、现有导出能力”等需要在实施前核查，不能直接当作不存在或已实现。</div>
+  </section>
+
+  <section class="section" id="architecture">
+    <div class="secno">02 / SYSTEM MAP</div><div class="sectionhead"><div><h2>整体产品架构</h2><p>知识内容的唯一工作现场在 CourseX。路线图、课程资源和公开作品通过稳定引用或导出协议连接，避免在两个仓库里反复维护同一份记录。</p></div></div>
+    <div class="topology">
+      <div class="topology-top">
+        <div class="topo-node"><div class="topo-label">READ / 指引</div><h3>React<br>Learning Hub</h3><p>知识路线 · 设计问题 · CourseX 操作法</p></div>
+        <div class="topo-arrow">→</div>
+        <div class="topo-node focus"><div class="topo-label">WORK / 真实学习现场</div><h3>CourseX</h3><p>课程 → 章节 → 主画布<br>卡片 · AI 对话 · 源码 · 图解 · 实验</p></div>
+        <div class="topo-arrow">→</div>
+        <div class="topo-node"><div class="topo-label">PUBLISH / 未来</div><h3>React,<br>Explained.</h3><p>选择性提炼 · 交互教材 · 独立发布</p></div>
+      </div>
+      <div class="topo-note">CourseX ↔ Git 结构化导出 / 恢复（个人可拥有的知识资产）；与公开教材之间是<strong style="color:#e7f6fc">筛选与再创作</strong>，不是一键镜像整张学习画布。</div>
+    </div>
+    <div class="cards three" style="margin-top:16px">
+      <div class="card flat"><div class="label">架构决策 A</div><h3>章节绑定一张主画布</h3><p class="small">每章自动定位唯一主画布，必要时可有辅助画板；不新增独立“知识笔记页面”。</p></div>
+      <div class="card flat"><div class="label">架构决策 B</div><h3>画布不是数据黑盒</h3><p class="small">知识卡片和对话有稳定 ID 与可读内容；坐标、形状和连线属于表现层。</p></div>
+      <div class="card flat"><div class="label">架构决策 C</div><h3>课程与机制松耦合</h3><p class="small">旧 Sxx-Lxx 作为机制索引，可映射多个课程章节；不强迫教材主题等于视频章节。</p></div>
+    </div>
+  </section>
+
+  <section class="section" id="hub">
+    <div class="secno">03 / REACT LEARNING HUB PLAN</div><div class="sectionhead"><div><h2>React Learning Hub：从工作台退回说明书</h2><p>不要迁移旧的进度、笔记和学习记录。保留路线图的知识价值，减少维护成本，重写文档使其明确服务于 CourseX。</p></div><span class="tag blue">子项目 A</span></div>
+    <div class="cards two">
+      <div class="card"><div class="label">目标目录 · 推荐</div><div class="filetree mono">react-learning-hub/<br>├── README.md <span class="comment"># 愿景 / 如何开始</span><br>├── roadmap.md <span class="comment"># 原理问题 / 依赖 / 映射</span><br>├── workflow.md <span class="comment"># CourseX 学习说明书</span><br>└── archive/ <span class="comment"># 可选：旧体系历史备份</span></div></div>
+      <div class="card"><div class="label">调整意图</div><h3>只维护导航，不维护状态</h3><p class="small">旧版 16 个阶段、49 个机制级 Lesson 的组织成果继续作为知识依赖索引。删除“每天必须填哪些表格”的要求；无需单独更新课程完成度、掌握度或双周复盘文件。</p><div class="callout" style="margin-top:13px">原仓库已存在的学习记录、实现证据和阶段成果，<strong>归档即可，不做 CourseX 数据迁移</strong>。</div></div>
+    </div>
+    <div style="margin-top:23px">
+      <div class="spec"><div class="spec-label">A01 · README<br><span class="tag blue">P0</span></div><div class="spec-body"><h4>改写使命与上手入口</h4><p>聚焦“为什么重新学源码、CourseX 承担什么、最终要做什么作品”。给出 3 分钟上手说明：打开 CourseX → 选章节 → 打开主画布 → 按四步学习 → 按需导出。保留课程、mini-react、官方源码的引用。去除把面试结果当终点的描述。</p></div></div>
+      <div class="spec"><div class="spec-label">A02 · ROADMAP<br><span class="tag blue">P0</span></div><div class="spec-body"><h4>将“实现任务”转化为“设计问题”，保留课程映射</h4><p>每个主题只维护：<b>核心问题、关键机制、前置依赖、课程章节、建议实验、延伸材料</b>。保留原 Sxx-Lxx ID 作为稳定索引，但不再要求对应课程必须产生独立记录。示例：<code>S01-L01 → 02-01、02-02</code>。</p><p>路线不必一字不动地沿视频编排，仍保持 16 阶段知识依赖脉络；遇到版本差异时注明 React 18 主线与 React 19+ 补充。</p></div></div>
+      <div class="spec"><div class="spec-label">A03 · WORKFLOW<br><span class="tag blue">P0</span></div><div class="spec-body"><h4>四步法和简洁 Prompt</h4><p>写清“提出问题 → 探索 → 独立验证 → 画布沉淀”，提供 3 类可复制 Prompt：学习引导、理解质疑、图解审稿。避免固定 60/90 分钟、强制 Quiz/面试、强制模板字段和打卡系统。</p></div></div>
+      <div class="spec"><div class="spec-label">A04 · 清理旧体系<br><span class="tag blue">P0</span></div><div class="spec-body"><h4>移出主导航、完整保留历史</h4><p>将 <code>lesson-progress.md</code>、<code>progress-tracker.md</code>、<code>learning-records/</code>、<code>notes/</code>、旧版 <code>prompts.md</code> 与模板等从主流程中移出，归档或保留 Git 历史。不覆写已有学习成果，不要求旧静态 Hub 继续产生新进度数据。</p></div></div>
+      <div class="spec"><div class="spec-label">A05 · 课程跳转<br><span class="tag gray">P1</span></div><div class="spec-body"><h4>从路线图跳到 CourseX</h4><p>若 CourseX 提供稳定章节链接，则在路线图中放入“在 CourseX 打开此章”入口。优先使用课程 ID / 章节 ID，而不是写死本机 IP 和端口；浏览器本地地址属于运行环境配置。</p></div></div>
+    </div>
+    <div class="outcome"><strong>React Learning Hub 完成定义：</strong><p>陌生读者只靠 README、roadmap 和 workflow 即可理解目标、定位下一节该学什么，以及在 CourseX 中如何学习；仓库本身不再出现需要重复填写的个人进度任务。</p></div>
+  </section>
+
+  <section class="section" id="coursex">
+    <div class="secno">04 / COURSEX FEATURE PLAN</div><div class="sectionhead"><div><h2>CourseX：让课程画布成为知识的实际载体</h2><p>最大限度复用现有播放器、课件、AI 问答、tldraw 与本地保存。新增能力围绕“关联、沉淀、引用、恢复”，避免过早开发另一套编辑器。</p></div><span class="tag green">子项目 B</span></div>
+    <div class="mock" aria-label="CourseX 章节画布建议布局示意图（非真实截图）">
+      <div class="mock-bar"><span><i class="mock-dot"></i><i class="mock-dot"></i><i class="mock-dot"></i> CourseX / 从 0 实现 React 18 / 02-01 实现 JSX</span><span>章节主画布 · 已保存</span></div>
+      <div class="mock-body"><div class="mock-menu"><div class="label" style="padding:0 9px 9px">课程目录</div><div class="item">01 项目架构</div><div class="item selected">02-01 实现 JSX</div><div class="item">02-02 JSX 打包</div><div class="item">03 Reconciler</div><div class="item">04 状态更新</div><div class="item">…</div></div><div class="mock-canvas"><div class="mc-title">02-01 · 我的 JSX 学习画布</div><div class="notes-grid"><div class="note-block"><b>❓ 学习问题</b><p>JSX 为什么先成为 ReactElement，而不是立即创建 DOM？</p></div><div class="note-block qa"><b>✦ AI 对话片段</b><p>关于 jsx 与 createElement 参数差异的讨论 · 源于课节问答</p></div><div class="note-block diagram"><b>↗ 机制图解</b><p>JSX → compile → jsx runtime → ReactElement</p></div><div class="note-block"><b>⌘ 代码 / 实验证据</b><p>mini-react18 commit · React 官方版本 · 测试结果</p></div><div class="note-block wide"><b>✓ 我的总结（已验证）</b><p>描述 UI、元素创建和宿主渲染是三个不同的环节。保留源码与实验引用。</p></div></div><div class="mock-foot">本图为目标交互示意：所有对象可自由移动与连接；点击对象可打开详情和关联来源。</div></div></div>
+    </div>
+    <p class="table-note">说明：这张示意图用来表达信息组织方式，而非要求 CourseX 完全替换现有三栏布局。播放器/课件可继续保持原样，画布通过展开、聚焦等已有入口进入。</p>
+    <div style="margin-top:25px">
+      <div class="spec"><div class="spec-label">B01 · 章节主画布<br><span class="tag blue">P0</span></div><div class="spec-body"><h4>章节 ↔ 主画布稳定绑定</h4><ul><li>打开课程章节，能找到对应的同一张主画布；没有时按需创建。</li><li>持久化 <code>courseId / chapterId / canvasId</code> 关系，防止重复创建。</li><li>切换章节时恢复原有节点、视口与最近编辑内容；提供“聚焦画布”。</li><li>保留已有画板选择能力，允许额外草稿画板，但默认主画布清晰可辨。</li></ul><p><b>验收：</b>多次打开同一章节不生成重复主画布，切换与刷新后内容不丢失。</p></div></div>
+      <div class="spec"><div class="spec-label">B02 · 知识卡片<br><span class="tag blue">P0</span></div><div class="spec-body"><h4>在画布中保存简洁、可编辑的知识内容</h4><ul><li>支持普通文本卡片、问题卡片、结论卡片及代码/来源链接卡片；优先通过 tldraw 自定义 Shape 或已有文本形状扩展。</li><li>卡片拥有稳定 ID、标题、正文、创建/修改时间及引用；允许自由布局与连接。</li><li>可从选中的课件文字、AI 对话中创建草稿卡片；用户可修改和删除。</li><li>“待验证 / 已验证”是可选的轻量标记，<strong>不要求填写复杂知识模板</strong>。</li></ul><p><b>验收：</b>新增、编辑、移动、重新打开、导出后均可读取完整卡片内容。</p></div></div>
+      <div class="spec"><div class="spec-label">B03 · AI → 画布<br><span class="tag blue">P0</span></div><div class="spec-body"><h4>把对话从一次性问答变成可复用素材</h4><ul><li>在已有课节问答中增加 <b>保存到画布</b>，支持单轮问答或用户选中的片段。</li><li>保存为“对话卡片”时，至少保留问题、回答、时间、原始会话引用、关联章节与来源上下文。</li><li>提供“提炼为知识卡片”操作，但默认进入可编辑草稿，<strong>不自动宣称答案已验证</strong>。</li><li>用户主动保存，避免每条聊天消息自动进入画布造成信息噪声。</li></ul><p><b>验收：</b>同一问答能被保存、回看、引用；重启后仍可阅读，AI 回答不会未经确认就变成知识结论。</p></div></div>
+      <div class="spec"><div class="spec-label">B04 · 证据引用<br><span class="tag blue">P0</span></div><div class="spec-body"><h4>把重要解释与源码/测试联系起来</h4><ul><li>卡片可关联课程章节、URL、Git commit、代码文件路径、React 版本或测试结果。</li><li>记录“来源类型”和可选版本信息，避免混淆课程 mini React 与 React 官方源码。</li><li>画布里的代码引用应是可点击的资源链接，而不是复制整段付费课程材料。</li></ul><p><b>验收：</b>一个“已验证”卡片能追溯至少一条用户记录的测试或可信源码证据；具体要求由作者决定，不设强制审核审批流程。</p></div></div>
+      <div class="spec"><div class="spec-label">B05 · 跨章节引用<br><span class="tag gray">P1</span></div><div class="spec-body"><h4>建立知识网络，而不是复制相同卡片</h4><p>支持在画布中引用其他章节卡片，打开链接可跳转到目标章节并定位对应节点。MVP 可先实现只读“卡片链接”节点，不必做全局知识图谱。</p><p><b>验收：</b>从 Fiber 章节点击 ReactElement 引用，可进入 JSX 章节并定位目标卡片。</p></div></div>
+      <div class="spec"><div class="spec-label">B06 · 画布聚焦与整理<br><span class="tag gray">P1</span></div><div class="spec-body"><h4>用画布完成学习，而不是制造另一套 UI</h4><p>提供“插入问题 / 插入卡片 / 保存对话 / 插入证据”的快捷动作、按对象定位、适度的框架和分区。不要强制生成四栏模板或限定卡片布局；无限画布的自由度是产品特征。</p></div></div>
+      <div class="spec"><div class="spec-label">B07 · 高级交互组件<br><span class="tag gray">P2</span></div><div class="spec-body"><h4>为未来 React 图解积累组件能力</h4><p>在知识画布中逐渐支持可执行的 Fiber 树、Hook 链表、Diff 过程等自定义组件，并明确版本与输入输出。先完成一个高价值实验组件，避免早期建设复杂插件平台。</p></div></div>
+    </div>
+    <div class="callout"><strong>重要产品约束：</strong>不要在 CourseX 新建独立的“知识库管理后台”和“学习记录中心”。知识、对话、引用的统一入口就是章节画布；必要的结构化字段服务于检索、链接与导出，而不是让用户填写更多表单。</div>
+  </section>
+
+  <section class="section" id="workflow">
+    <div class="secno">05 / USER JOURNEY</div><div class="sectionhead"><div><h2>新的学习流程：四步，不再打卡</h2><p>保留独立思考与代码验证的严格性，但去掉每课强制执行的日程、Quiz 数量、面试追问与双套记录。复杂机制允许跨多次学习，不把效率指标建立在看完多少视频上。</p></div></div>
+    <div class="flow4"><div class="step"><div class="num">STEP 01</div><h4>提出问题</h4><p>选章节，在画布上放一个问题或假设。</p></div><div class="step"><div class="num">STEP 02</div><h4>学习探索</h4><p>看课件、读源码、问 AI，保存有价值的讨论。</p></div><div class="step"><div class="num">STEP 03</div><h4>独立验证</h4><p>写 mini React、测试、最小实验，发现理解偏差。</p></div><div class="step"><div class="num">STEP 04</div><h4>画布沉淀</h4><p>留下结论、引用与图解，需要时回头更新。</p></div></div>
+    <div class="columns" style="margin-top:24px">
+      <div class="card flat"><span class="tag green">主流程 · 必需</span><h3 style="margin-top:12px">学习的最小完成条件</h3><p class="small">你能够不依赖课件，用自己的语言解释核心机制，并至少通过一个可信的源码依据、测试或独立实验确认关键行为。画布留下能让未来的自己快速恢复理解的内容。</p></div>
+      <div class="card flat"><span class="tag gray">创作分支 · 按需</span><h3 style="margin-top:12px">图解作品化不强制每节执行</h3><p class="small">只有当某个机制确实适合“操作后更容易理解”时，再将草图提升为交互原型。原型通过技术与教学审核后，才进入未来的公开教材。</p></div>
+    </div>
+    <h3 style="margin-top:28px">S01-L01 / 02-01「实现 JSX」完整体验</h3>
+    <div class="mini-grid">
+      <div class="mini-panel"><div class="head">课堂进入</div><p>打开 CourseX 的「02-01 实现 JSX」→ 恢复其主画布 → 放入问题卡片“JSX 为什么不是 DOM？”</p></div>
+      <div class="mini-panel"><div class="head">深挖与质疑</div><p>观看视频、研究 jsx/ReactElement → 针对 jsx 与 createElement 的 <code>key</code> 参数区别向 AI 追问 → 保存关键问答。</p></div>
+      <div class="mini-panel"><div class="head">自主验证</div><p>在 mini React 代码仓库做最小 JSX Runtime 实现及测试 → 将 commit、测试结果和自己绘制的转换图放进画布。</p></div>
+    </div>
+    <p class="notice">这一次学习没有“填写 Lesson 日志”的额外环节。课程画布本身就是学习现场，也是以后重访时的总笔记。</p>
+  </section>
+
+  <section class="section" id="data">
+    <div class="secno">06 / DATA CONTRACT & GIT EXPORT</div><div class="sectionhead"><div><h2>Git 友好的结构化导出</h2><p>这是基础架构要求，不是项目完工后附加的“导出图片”按钮。核心原则：<strong>语义内容和布局坐标分层</strong>，导出可读、可比较、可恢复，并保留未来抽取为教学作品的可能。</p></div></div>
+    <div class="cards three">
+      <div class="card flat"><span class="tag blue">语义层</span><h3 style="margin-top:11px">Content</h3><p class="small">课程与章节 ID、知识卡片 Markdown、AI 对话文本、来源、跨章关联与验证标记。</p></div>
+      <div class="card flat"><span class="tag green">布局层</span><h3 style="margin-top:11px">Layout</h3><p class="small">tldraw 原生画布快照、对象位置、尺寸、连线、视口等。允许后续替换渲染实现。</p></div>
+      <div class="card flat"><span class="tag orange">资源层</span><h3 style="margin-top:11px">Assets</h3><p class="small">图片、自己绘制的 SVG、关联文件元数据。外部源文件尽量保留引用，避免重复打包。</p></div>
+    </div>
+    <h3 style="margin-top:26px">建议导出包 v1（示意）</h3>
+    <div class="codeblock-header"><span>coursex-export/ · 可纳入 Git 仓库</span><span>UTF-8 / deterministic</span></div>
+    <pre><code>coursex-export/
+├── manifest.json                 # schemaVersion / exportedAt / 项目索引
+└── courses/
+    └── react18/
+        ├── course.json           # courseId / 元数据 / 章节列表
+        └── chapters/
+            └── 02-01-jsx/
+                ├── chapter.json  # chapterId / canvasId / 卡片和引用关系
+                ├── canvas.json   # tldraw 快照；布局与视觉关系
+                ├── cards/
+                │   ├── question-jsx.md
+                │   └── jsx-runtime.md
+                ├── conversations/
+                │   └── jsx-key-discussion.json
+                └── assets/
+                    └── jsx-transformation.svg</code></pre>
+    <p class="table-note">目录名可以为人类可读的 slug，但真正的关联必须依赖稳定 ID，而不是文件路径、画布坐标、视频序号或标题文本。</p>
+    <div class="columns" style="margin-top:25px">
+      <div><h3>最小实体关系</h3><div class="table-wrap"><table style="min-width:440px"><thead><tr><th>实体</th><th>必要字段</th><th>关系</th></tr></thead><tbody><tr><td><b>Course</b></td><td><code>id, title</code></td><td>包含章节</td></tr><tr><td><b>Chapter</b></td><td><code>id, courseId, order</code></td><td>关联一个主画布</td></tr><tr><td><b>Canvas</b></td><td><code>id, chapterId, snapshot</code></td><td>含节点引用和布局</td></tr><tr><td><b>Card</b></td><td><code>id, chapterId, type, body</code></td><td>可被多个画布引用</td></tr><tr><td><b>ConversationExcerpt</b></td><td><code>id, origin, turns</code></td><td>来源于 AI 会话</td></tr><tr><td><b>Evidence</b></td><td><code>id, sourceType, uri, version?</code></td><td>附着于卡片/实验</td></tr></tbody></table></div></div>
+      <div><h3>知识卡片示意</h3><div class="codeblock-header"><span>cards/jsx-runtime.md</span><span>Markdown + frontmatter</span></div><pre><code>---
+id: card_jsx_runtime
+chapterId: chapter_02_01
+type: concept
+status: verified
+refs:
+  - evidence_jsx_test
+---
+
+# JSX Runtime
+
+JSX 编译与 ReactElement 创建是两个环节。
+ReactElement 仍不是宿主 DOM。
+
+## 我的证据
+- mini React 测试：evidence_jsx_test
+- React 官方源码：指定版本及路径</code></pre></div>
+    </div>
+    <h3 style="margin-top:26px">导出行为与一致性规则</h3>
+    <div class="spec"><div class="spec-label">C01 · 一键导出<br><span class="tag blue">P0</span></div><div class="spec-body"><p>提供“导出当前课程/全部学习数据”的操作。导出时获取一致性快照，并明确导出范围、生成时间和 schemaVersion。导出包包含知识正文与画布结构，<b>不是只有图片或不可读的单一大 JSON</b>。</p></div></div>
+    <div class="spec"><div class="spec-label">C02 · Git 稳定性<br><span class="tag blue">P0</span></div><div class="spec-body"><p>文件名/对象 ID 稳定，属性按固定顺序输出、换行统一、序列化排序稳定。时间戳等易变化字段限制在必要范围；未经修改的卡片反复导出不产生无意义 Diff。画布位置更新不应改写全部卡片的 Markdown。</p></div></div>
+    <div class="spec"><div class="spec-label">C03 · 恢复验证<br><span class="tag gray">P1</span></div><div class="spec-body"><p>支持导入同版本导出包，恢复章节主画布绑定、卡片、对话和布局；检查缺失资源/未知对象类型并给出错误报告。采用先预览再确认的导入方式，默认避免覆盖已有数据。</p></div></div>
+    <div class="spec"><div class="spec-label">C04 · 安全与版权<br><span class="tag blue">P0</span></div><div class="spec-body"><p>导出前提示敏感内容范围。默认不包含登录凭据、API Key、cookie、本地路径中的私密信息、付费课程原始视频/完整课件；对话导出应支持选取已保存片段。个人备份与公开分享须有清晰区分。</p></div></div>
+    <div class="callout warning"><strong>不能忽略的技术问题：</strong>如果 CourseX 当前只保存 tldraw 原生 JSON，应优先研究“结构化内容对象与 shape 的映射”，不要简单从任意形状文字反向解析知识卡片；否则后续 Git 导出、检索、跨章引用与内容复用都将不可靠。</div>
+  </section>
+
+  <section class="section" id="backlog">
+    <div class="secno">07 / FEATURE BACKLOG</div><div class="sectionhead"><div><h2>功能优先级与范围控制</h2><p>开发优先顺序应围绕一条最小闭环：<strong>路线图能指路 → 章节能进入画布 → AI/卡片能沉淀 → 数据能导出</strong>。其余能力在真实使用后逐步补充。</p></div></div>
+    <div class="priority-bar no-print"><span>筛选</span><button class="btn active" data-filter="ALL">全部</button><button class="btn" data-filter="P0">P0 · 必须</button><button class="btn" data-filter="P1">P1 · 增强</button><button class="btn" data-filter="P2">P2 · 远期</button><span id="filterCount" style="margin-left:auto"></span></div>
+    <div class="table-wrap"><table id="backlogTable"><thead><tr><th>ID</th><th>项目</th><th>需求</th><th>优先级</th><th>完成可验证的结果</th></tr></thead><tbody>
+      <tr data-priority="P0"><td>A01</td><td>Learning Hub</td><td>README 愿景与入口改写</td><td><span class="tag blue">P0</span></td><td>说明产品边界与最短开始路径</td></tr>
+      <tr data-priority="P0"><td>A02</td><td>Learning Hub</td><td>路线图问题化与课程映射</td><td><span class="tag blue">P0</span></td><td>原机制索引可追踪到课程章节</td></tr>
+      <tr data-priority="P0"><td>A03</td><td>Learning Hub</td><td>四步学习说明与 Prompt</td><td><span class="tag blue">P0</span></td><td>无进度表也能独立完成一次学习</td></tr>
+      <tr data-priority="P0"><td>A04</td><td>Learning Hub</td><td>旧记录体系归档、移出主导航</td><td><span class="tag blue">P0</span></td><td>旧成果保留，日常不双写</td></tr>
+      <tr data-priority="P1"><td>A05</td><td>Learning Hub</td><td>稳定章节跳转入口</td><td><span class="tag gray">P1</span></td><td>从路线图打开对应 CourseX 章节</td></tr>
+      <tr data-priority="P0"><td>B01</td><td>CourseX</td><td>章节主画布绑定及恢复</td><td><span class="tag blue">P0</span></td><td>重复进入同一章节主画布 ID 不变</td></tr>
+      <tr data-priority="P0"><td>B02</td><td>CourseX</td><td>可编辑知识卡片及稳定 ID</td><td><span class="tag blue">P0</span></td><td>卡片内容和布局独立持久化</td></tr>
+      <tr data-priority="P0"><td>B03</td><td>CourseX</td><td>AI 对话保存 / 提炼为卡片</td><td><span class="tag blue">P0</span></td><td>对话可重访、草稿不可伪装为已验证</td></tr>
+      <tr data-priority="P0"><td>B04</td><td>CourseX</td><td>源码、测试、版本证据引用</td><td><span class="tag blue">P0</span></td><td>结论能追溯具体依据</td></tr>
+      <tr data-priority="P1"><td>B05</td><td>CourseX</td><td>跨章节卡片引用</td><td><span class="tag gray">P1</span></td><td>跳转并定位其他章节的卡片</td></tr>
+      <tr data-priority="P1"><td>B06</td><td>CourseX</td><td>画布聚焦、快捷创建与整理</td><td><span class="tag gray">P1</span></td><td>重复学习时能快速找到原有知识</td></tr>
+      <tr data-priority="P2"><td>B07</td><td>CourseX</td><td>可交互源码图解组件</td><td><span class="tag orange">P2</span></td><td>一个真实机制可操作、可复用</td></tr>
+      <tr data-priority="P0"><td>C01</td><td>CourseX</td><td>可读结构化导出</td><td><span class="tag blue">P0</span></td><td>卡片/会话/画布可完整导出</td></tr>
+      <tr data-priority="P0"><td>C02</td><td>CourseX</td><td>确定性序列化与 Git Diff</td><td><span class="tag blue">P0</span></td><td>未修改内容重复导出无无谓变更</td></tr>
+      <tr data-priority="P1"><td>C03</td><td>CourseX</td><td>导入恢复与冲突预览</td><td><span class="tag gray">P1</span></td><td>恢复章节绑定、内容、画布布局</td></tr>
+      <tr data-priority="P0"><td>C04</td><td>CourseX</td><td>敏感数据/版权导出边界</td><td><span class="tag blue">P0</span></td><td>默认导出不泄露密钥与课程原文</td></tr>
+    </tbody></table></div>
+    <p class="notice">P0 = 形成完整可用的学习与知识导出闭环；P1 = 体验与可靠性增强；P2 = 面向公开教材的能力储备。P0 不等同于要求所有功能在同一次提交上线。</p>
+  </section>
+
+  <section class="section" id="delivery">
+    <div class="secno">08 / IMPLEMENTATION ROADMAP</div><div class="sectionhead"><div><h2>研发里程碑：按依赖拆解，不预设不可靠工期</h2><p>里程碑以验收结果为标准，避免为了一个新的“学习系统”长期开发而耽误 React 本身的学习。先文档、后关联、再沉淀、再导出与恢复。</p></div></div>
+    <div class="timeline">
+      <div class="mile"><span class="tag gray">M0 · 调研与冻结契约</span><h3>确认 CourseX 的现有实现边界</h3><p>检查课程和章节 ID、画板存储位置、tldraw 版本和快照接口、Pi Agent 对话持久化方式、当前本地保存机制。确定 schemaVersion、实体 ID 规则和既有画板兼容策略。</p><div class="small"><strong>验收：</strong>形成代码审计清单、数据关系设计和不破坏旧画板的迁移方案。</div></div>
+      <div class="mile"><span class="tag blue">M1 · Learning Hub 精简</span><h3>先把说明书变成能用的三份文档</h3><p>改写 README、roadmap、workflow；旧学习记录归档；不重写历史笔记，不再维护原静态 Hub 进度机制。</p><div class="small"><strong>验收：</strong>从 README 可以定位 S01-L01，理解四步法，并找到 CourseX 里要打开的章节。</div></div>
+      <div class="mile"><span class="tag blue">M2 · CourseX 章节画布 MVP</span><h3>章节主画布与知识卡片</h3><p>建立稳定绑定、画布自动恢复、文本卡片/问题卡片、证据引用与轻量验证标记；尽量延续现有 tldraw 画板。</p><div class="small"><strong>验收：</strong>创建 → 编辑 → 刷新 → 切章 → 回来，卡片和布局一致。</div></div>
+      <div class="mile"><span class="tag blue">M3 · AI 与画布联动</span><h3>把课节问答沉淀到章节画布</h3><p>保存对话片段、提炼草稿、追溯原会话和源课节。确保“主动筛选、可编辑、未经验证不自动晋升”。</p><div class="small"><strong>验收：</strong>一次 JSX 课节问答可保存为卡片并重访。</div></div>
+      <div class="mile"><span class="tag blue">M4 · Git 结构化导出</span><h3>可读、稳定、完整的一键导出</h3><p>设计 manifest、语义内容、画布快照与资源引用；编写确定性序列化、隐私排除与 schema 校验。</p><div class="small"><strong>验收：</strong>导出的目录可读、可 commit；重复导出仅在真正改变内容时出现有效 Diff。</div></div>
+      <div class="mile"><span class="tag gray">M5 · 强化与长期演进</span><h3>恢复导入、跨章引用、可复用交互图解</h3><p>依据真实使用反馈，补齐恢复能力、导航与跨章节链接。再考虑源码实验组件与未来 React, Explained. 的发布管线。</p><div class="small"><strong>验收：</strong>可以无损恢复一次课程快照，并至少完成一个可验证的交互机制原型。</div></div>
+    </div>
+    <div class="outcome" style="margin-top:24px"><strong>实施节奏建议：</strong><p>M1 可以与 M0 并行；M2 必须先于 M3，M4 应与 M2 同步约束数据模型而不是等到最后再设计。每完成一个里程碑，就用当前 JSX 课程真实体验验收一次。</p></div>
+  </section>
+
+  <section class="section" id="acceptance">
+    <div class="secno">09 / ACCEPTANCE & RISKS</div><div class="sectionhead"><div><h2>可执行的验收清单</h2><p>这些是产品级测试场景，不是管理型学习打卡。勾选只是这份网页中的审阅工具，不会写入 CourseX 或 React Learning Hub 数据。</p></div></div>
+    <div class="check-grid" id="acceptChecks">
+      <label class="checkitem"><input type="checkbox"><span>RLH 只保留路线/使用说明主线，旧记录未丢失且不要求双重维护。</span></label>
+      <label class="checkitem"><input type="checkbox"><span>同一章节多次进入始终定位同一张主画布。</span></label>
+      <label class="checkitem"><input type="checkbox"><span>知识卡片创建、编辑、移动、刷新、回访后保持一致。</span></label>
+      <label class="checkitem"><input type="checkbox"><span>选中一段 AI 问答可保存到画布，并保留问答上下文。</span></label>
+      <label class="checkitem"><input type="checkbox"><span>AI 生成的卡片是草稿，不会自动变成已验证结论。</span></label>
+      <label class="checkitem"><input type="checkbox"><span>知识结论能关联 Git commit、测试或版本化源码。</span></label>
+      <label class="checkitem"><input type="checkbox"><span>画布的知识内容能独立于坐标以 Markdown/JSON 导出。</span></label>
+      <label class="checkitem"><input type="checkbox"><span>连续两次无修改导出，不造成大面积无意义 Git Diff。</span></label>
+      <label class="checkitem"><input type="checkbox"><span>包含旧 tldraw 画板时仍可正常读取与保存。</span></label>
+      <label class="checkitem"><input type="checkbox"><span>导出默认不包含密钥、私密配置和付费课程原始内容。</span></label>
+      <label class="checkitem"><input type="checkbox"><span>后续导入功能可从导出包恢复章节、卡片和布局。</span></label>
+      <label class="checkitem"><input type="checkbox"><span>完成 S01-L01 一次真实学习，无需填写重复进度表。</span></label>
+    </div><div class="check-progress"><span id="checkCount">0 / 12 已确认</span><div class="progress-track"><div class="progress-fill" id="checkFill"></div></div></div>
+    <h3 style="margin-top:30px">主要风险与处理原则</h3>
+    <details open><summary>R1. 画布变成堆积信息的垃圾场</summary><div class="detail-body">默认不自动将 AI 全部输出放到画布。以“保存片段 / 提炼卡片”的主动操作为主；在每章画布里提供适度的框架、聚焦、搜索与整理能力，但不强制模板化。</div></details>
+    <details><summary>R2. tldraw 原始快照与语义数据不同步</summary><div class="detail-body">稳定的内容实体 ID 与 shape 引用分离。写入顺序、事务边界、删除与恢复都应定义清楚；采用一次课程内容快照进行导出，保证关系有效。</div></details>
+    <details><summary>R3. AI 错误被当作源码事实长期传播</summary><div class="detail-body">来源可追溯、验证状态默认 draft、明确 React 版本和课程简化差异。对话和知识卡片分离，生成卡片必须经过用户确认。</div></details>
+    <details><summary>R4. 复制课程原文造成版权与传播风险</summary><div class="detail-body">课程资源只保留必要引用与用户原创笔记；不将付费原视频、完整课件、授权凭据或会话 cookie 纳入默认 Git 导出；公开教材进行独立表达与验证。</div></details>
+    <details><summary>R5. 本地数据损坏、跨设备和覆盖冲突</summary><div class="detail-body">MVP 先实现手动结构化导出；随后增加导入校验、备份检查、版本迁移、冲突预览。不要一开始建设双向自动 Git 同步，避免产生更难解决的冲突。</div></details>
+    <details><summary>R6. 产品开发挤占 React 学习时间</summary><div class="detail-body">以当前 JSX 章节验证实际收益，锁定 P0 范围；每次只做一项能减少学习摩擦的改进。不要提前建设课程管理后台、Agent 终端或完整互动教学编辑器。</div></details>
+    <h3 style="margin-top:30px">衡量成效：不是“完成率”，而是学习能否持续</h3>
+    <div class="cards three"><div class="card flat"><div class="label">学习体验</div><h3>更少重复整理</h3><p class="small">从打开课节到找回上次知识画布是否顺畅；是否无需额外维护另一个笔记/进度体系。</p></div><div class="card flat"><div class="label">知识质量</div><h3>可追溯、可纠错</h3><p class="small">关键结论是否链接实验或源码；回访旧章节时能否快速理解原思路与曾犯的错误。</p></div><div class="card flat"><div class="label">资产独立性</div><h3>导得出、还原得回</h3><p class="small">内容在编辑器之外可读，变更可被 Git 审阅，未来可以被新的教学项目提取利用。</p></div></div>
+  </section>
+
+  <section class="section" id="appendix">
+    <div class="secno">10 / HANDOFF & REFERENCES</div><div class="sectionhead"><div><h2>交付给开发 Agent 的执行边界</h2><p>本企划书可作为开发任务的上位需求，但不替代源码级技术评审。先核查现有实现，再决定数据库迁移、组件边界和接口细节。</p></div></div>
+    <div class="card flat">
+      <h3>建议给 Agent 的第一条开发任务</h3>
+      <p class="small">先检查 CourseX 中课程/章节模型、当前画板持久化、Pi Agent 会话记录、tldraw 快照与导出/导入相关代码。对照本企划的 B01–B04、C01–C04，输出“现有能力 / 缺口 / 最小改动方案 / 兼容风险 / 数据模型 / 测试方案”。不要直接重构整体 UI，也不要新建独立学习管理模块。</p>
+      <button class="btn" id="copyTask">复制 Agent 任务说明</button>
+    </div>
+    <div class="cards two" style="margin-top:16px">
+      <div class="card flat"><h3>已参照的项目</h3><div class="linkgrid"><a href="https://github.com/Kiokku/react-learning-hub" target="_blank" rel="noopener">React Learning Hub 仓库 ↗</a><a href="https://kiokku.github.io/react-learning-hub/" target="_blank" rel="noopener">原 Learning Hub 网页 ↗</a><a href="http://192.168.1.3:4310/" target="_blank" rel="noopener">CourseX 本地页面 ↗</a><a href="http://127.0.0.1:6173/canvas/c_e70ed247a5464bac" target="_blank" rel="noopener">CanvasAgents 参考页 ↗</a></div><p class="source" style="margin:14px 0 0">本地地址仅在对应网络与服务运行时可访问。</p></div>
+      <div class="card flat"><h3>本轮明确排除</h3><p class="small">不迁移 React Learning Hub 历史记录；不重建打卡/面试/Quiz 管理系统；不要求每节课制作公开图解；不复制 CanvasAgents 的终端或 Agent CLI；不立即开发独立 React, Explained. 网站；不在 MVP 做云端多人协作和自动 Git 双向同步。</p></div>
+    </div>
+    <div class="quote" style="margin-top:24px">终局愿景：<strong>Build it. Prove it. Explain it. Teach it.</strong><br>CourseX 留下真实探索的痕迹，React Learning Hub 提供方向，最终那些被真正理解的机制，才有机会成为值得公开的图解 React。</div>
+  </section>
+
+  <footer class="footer"><span>React Learning Hub × CourseX · 产品企划书 v1.0 · 2026-11-05</span><span>单文件 HTML · 可离线阅读 · 支持打印 · 不含外部依赖</span></footer>
+</main>
+</div>
+<script>
+(function(){
+  const $=(s,root=document)=>root.querySelector(s), $$=(s,root=document)=>Array.from(root.querySelectorAll(s));
+  const sidebar=$('#sidebar'), toggle=$('#navToggle');
+  if(toggle)toggle.addEventListener('click',()=>{const show=sidebar.classList.toggle('show');toggle.setAttribute('aria-expanded',String(show));});
+  $$('#toc a').forEach(a=>a.addEventListener('click',()=>sidebar.classList.remove('show')));
+  const sections=$$('main section[id]'), links=$$('#toc a');
+  const onScroll=()=>{const y=window.scrollY+145;let active=sections[0]?.id;for(const s of sections){if(s.offsetTop<=y)active=s.id;}links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+active));};
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+  const rows=$$('#backlogTable tbody tr'), filterCount=$('#filterCount');
+  $$('.priority-bar [data-filter]').forEach(b=>b.addEventListener('click',()=>{const f=b.dataset.filter;$$('.priority-bar [data-filter]').forEach(x=>x.classList.toggle('active',x===b));let count=0;rows.forEach(r=>{const ok=f==='ALL'||r.dataset.priority===f;r.classList.toggle('hide-row',!ok);if(ok)count++});filterCount.textContent=`显示 ${count} 项`; }));
+  filterCount.textContent=`显示 ${rows.length} 项`;
+  const checks=$$('#acceptChecks input'), checkCount=$('#checkCount'), fill=$('#checkFill');
+  function updateChecks(){let n=0;checks.forEach(c=>{if(c.checked)n++;c.closest('label').classList.toggle('is-done',c.checked);});checkCount.textContent=`${n} / ${checks.length} 已确认`;fill.style.width=(100*n/checks.length)+'%';}
+  checks.forEach(c=>c.addEventListener('change',updateChecks));updateChecks();
+  async function copy(s,btn){try{await navigator.clipboard.writeText(s);const old=btn.textContent;btn.textContent='✓ 已复制';setTimeout(()=>btn.textContent=old,1600);}catch(e){const t=document.createElement('textarea');t.value=s;document.body.append(t);t.select();document.execCommand('copy');t.remove();const old=btn.textContent;btn.textContent='✓ 已复制';setTimeout(()=>btn.textContent=old,1600);}}
+  $('#copyBrief').addEventListener('click',e=>copy('产品目标：React Learning Hub 成为 CourseX 上学习 React 的轻量路线图与说明书；CourseX 以章节无限画布承载知识卡片、AI 对话、源码证据和图解；支持 Git 友好的结构化导出。明确不迁移旧 Learning Hub 学习记录、不重建进度系统、不把个人学习画布直接公开。优先完成 RLH 文档精简、CourseX 章节画布绑定、卡片与问答沉淀、可读可版本化导出。',e.currentTarget));
+  $('#copyTask').addEventListener('click',e=>copy('请先审计 CourseX 现有源码，不要直接改动：1. 定位 course/chapter ID 与路由、tldraw 画布快照/存储/恢复逻辑、Pi Agent 会话结构、导出能力；2. 与产品企划书 B01–B04、C01–C04 对照形成已具备/缺口矩阵；3. 给出章节主画布稳定绑定、结构化知识卡片、AI 对话保存到画布、源码证据引用、Git 友好导出的最小方案；4. 提出 schema 与稳定 ID 设计、旧数据兼容策略、可重复导出及隐私/版权边界；5. 列出最小测试与验收场景。不要新建独立学习管理后台，不迁移 React Learning Hub 旧笔记，不重构播放器 UI。',e.currentTarget));
+})();
+</script>
+</body>
+</html>

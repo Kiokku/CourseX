@@ -1,0 +1,16 @@
+.venv/
+.coursex/
+.playwright-cli/
+__pycache__/
+.DS_Store
+node_modules/
+dist/
+.coursex-data*/
+.env
+.env.*
+!.env.example
+library/
+output/
+.impeccable/
+*.log
+*.py[cod]
